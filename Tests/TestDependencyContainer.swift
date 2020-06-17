@@ -3,6 +3,6 @@
 import Foundation
 import IndustrialRevolution
 
-class TestDependencyContainer: IndustrialRevolution.DependencyContainer {
+class TestDependencyContainer: IndustrialRevolution.DependencyContainerProtocol {
     let application: Any = "test"
 }
