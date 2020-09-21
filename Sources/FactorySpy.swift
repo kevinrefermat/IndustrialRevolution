@@ -6,8 +6,8 @@ public class FactorySpy<Product: Makeable>: Factory<Product> {
     public private(set) var invocations = [Invocation<Product>]()
 
     public struct Invocation<Product: Makeable> {
-        let configuration: Product.Configuration
-        let product: Product
+        public let configuration: Product.Configuration
+        public let product: Product
     }
 
     public override func make(configuration: Product.Configuration) -> Product {
