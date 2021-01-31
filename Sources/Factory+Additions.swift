@@ -8,3 +8,35 @@ extension Factory where Product.Configuration==Void {
         return product
     }
 }
+
+extension Factory where Product.Dependencies==Void {
+    public convenience init() {
+        self.init(
+            dependencies: .init(
+                productDependencies: ()
+            )
+        )
+    }
+}
+
+extension MockableFactory where ProductConfiguration == Void {
+    public func make() -> Product {
+        make(configuration: ())
+    }
+}
+
+extension Factory {
+    public func mockableFactory<TransformedProduct>(
+        transform: @escaping (Product) -> (TransformedProduct)
+    ) -> MockableFactory<Product.Configuration, TransformedProduct> {
+        MockableFactory(
+            transformFactory: TransformFactory(
+                configuration: (),
+                dependencies: TransformFactory.Dependencies(
+                    factory: self,
+                    transform: transform
+                )
+            )
+        )
+    }
+}
