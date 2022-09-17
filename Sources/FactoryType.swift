@@ -2,7 +2,7 @@
 
 import Foundation
 
-public protocol FactoryType { // maybe call this DynamicFactory or something to indicate that it's a factory that doesn't have knowledge of Dependencies, just Configuration
+public protocol FactoryType {
     associatedtype Product
     associatedtype ProductConfiguration
 
