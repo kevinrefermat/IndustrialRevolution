@@ -10,7 +10,7 @@ public class Factory<Product: Makeable>: FactoryType, Makeable {
             self.productDependencies = productDependencies
         }
     }
-    
+
     private let dependencies: Dependencies
 
     public required init(configuration: Void, dependencies: Dependencies) {
@@ -51,10 +51,12 @@ public class MockableFactory<ProductConfiguration, Product>: FactoryType, Makeab
     public struct Dependencies {
         let makeProduct: (ProductConfiguration) -> Product
     }
-    
+
     private let dependencies: Dependencies
 
-    public convenience init<ConcreteProduct: Makeable>(transformFactory: TransformFactory<ConcreteProduct,Product>) where ConcreteProduct.Configuration==ProductConfiguration {
+    public convenience init<ConcreteProduct: Makeable>(
+        transformFactory: TransformFactory<ConcreteProduct, Product>
+    ) where ConcreteProduct.Configuration==ProductConfiguration {
         let dependencies = Dependencies(makeProduct: { (productConfiguration) in
             let product = transformFactory.make(configuration: productConfiguration)
             return product
@@ -71,4 +73,3 @@ public class MockableFactory<ProductConfiguration, Product>: FactoryType, Makeab
         return product
     }
 }
-

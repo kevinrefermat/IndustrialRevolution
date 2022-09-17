@@ -8,7 +8,8 @@ let package = Package(
     products: [
         .library(
             name: "IndustrialRevolution",
-            targets: ["IndustrialRevolution"]),
+            targets: ["IndustrialRevolution"]
+        )
     ],
     dependencies: [
 
@@ -17,10 +18,12 @@ let package = Package(
         .target(
             name: "IndustrialRevolution",
             dependencies: [],
-            path: "Sources"),
+            path: "Sources"
+        ),
         .testTarget(
             name: "IndustrialRevolutionTests",
             dependencies: ["IndustrialRevolution"],
-            path: "Tests"),
+            path: "Tests"
+        )
     ]
 )

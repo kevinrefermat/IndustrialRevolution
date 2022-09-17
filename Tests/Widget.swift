@@ -3,13 +3,9 @@
 import Foundation
 import IndustrialRevolution
 
-protocol WidgetProtocol {
+protocol WidgetProtocol {}
 
-}
-
-final class MockWidget: WidgetProtocol {
-    
-}
+final class MockWidget: WidgetProtocol {}
 
 final class Widget: WidgetProtocol, Makeable {
     struct Configuration {
